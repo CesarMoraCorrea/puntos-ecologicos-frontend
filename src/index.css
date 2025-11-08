@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+/* Tailwind v4: indicar fuentes de escaneo */
+@source "../index.html";
+@source "./**/*.{js,jsx,ts,tsx}";
+
+/* Base styles */
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-white text-gray-800;
+}
+
+/* Simple utility for container width */
+.page-container {
+  @apply max-w-6xl mx-auto px-4;
+}
