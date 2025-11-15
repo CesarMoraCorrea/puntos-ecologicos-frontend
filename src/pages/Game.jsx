@@ -261,6 +261,7 @@ export default function Game({ isRegistered, onRequireRegister = () => {}, playe
                       alt={current.name}
                       className="w-full h-full object-contain"
                       style={{ objectPosition: 'center' }}
+                      referrerPolicy="no-referrer"
                       loading="lazy"
                       onError={() => setImageFailed(true)}
                     />
