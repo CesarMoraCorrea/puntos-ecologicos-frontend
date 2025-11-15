@@ -17,6 +17,7 @@ export default function Game({ isRegistered, onRequireRegister = () => {}, playe
   const [feedback, setFeedback] = useState(null) // { type: 'success'|'error', text }
   const [lastChoice, setLastChoice] = useState(null) // { binKey, correct }
   const [player, setPlayer] = useState(propPlayer || null)
+  const [imageFailed, setImageFailed] = useState(false)
   const secret = useMemo(() => import.meta.env.VITE_STORAGE_SECRET || 'demo-secret', [])
   const navigate = useNavigate()
 
@@ -50,6 +51,11 @@ export default function Game({ isRegistered, onRequireRegister = () => {}, playe
       }
     })()
   }, [propPlayer, secret])
+
+  // Reiniciar estado de imagen cuando cambia el residuo actual
+  useEffect(() => {
+    setImageFailed(false)
+  }, [current])
 
   const start = () => {
     const registered = typeof isRegistered === 'boolean' ? isRegistered : (localStorage.getItem('registered') === 'true')
@@ -245,11 +251,24 @@ export default function Game({ isRegistered, onRequireRegister = () => {}, playe
               )}
             </div>
 
-            {/* Residuo actual con ícono representativo */}
+            {/* Residuo actual con imagen real */}
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
               <div className="rounded border bg-gray-50 overflow-hidden">
-                <div className="h-40 sm:h-48 flex items-center justify-center">
-                  <ResidueIcon name={current.name} type={current.type} />
+                <div className="h-40 sm:h-48 bg-white">
+                  {current?.image && !imageFailed ? (
+                    <img
+                      src={current.image}
+                      alt={current.name}
+                      className="w-full h-full object-contain"
+                      style={{ objectPosition: 'center' }}
+                      loading="lazy"
+                      onError={() => setImageFailed(true)}
+                    />
+                  ) : (
+                    <div className="h-full flex items-center justify-center">
+                      <ResidueIcon name={current.name} type={current.type} />
+                    </div>
+                  )}
                 </div>
               </div>
               <div>
