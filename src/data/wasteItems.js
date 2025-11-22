@@ -5,11 +5,6 @@ export const wasteItems = [
     image: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Plastic_bottle.jpg",
   },
   {
-    name: "Botella de plástico (HDPE)",
-    type: "blanco",
-    image: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Plastic_bottle_hdpe.jpg",
-  },
-  {
     name: "Lata de aluminio",
     type: "blanco",
     image: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Aluminium_can_model_1_N.PNG",
@@ -17,7 +12,7 @@ export const wasteItems = [
   {
     name: "Botella de vidrio",
     type: "blanco",
-    image: "https://upload.wikimedia.org/wikipedia/commons/d/d2/Glass_bottles.jpg",
+    image: "https://http2.mlstatic.com/D_NQ_NP_718948-MCO51125785490_082022-O.webp",
   },
   {
     name: "Caja de cartón",
